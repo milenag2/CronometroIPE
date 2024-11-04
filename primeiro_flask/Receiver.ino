@@ -1,4 +1,4 @@
-//LoraReceiverQueDeuCerto//
+
 #include <LoRa.h>
 #include <SPI.h>
 #include <Wire.h>
