@@ -232,7 +232,7 @@ void loop() {
       if (receivedMessage == 'A') {
         Serial.println("Cronômetro pronto");
       }
-      if (receivedMessage == 'S') { //
+      if (receivedMessage == 'E') { //
         if(!cavaloJaPassou){
           tempo=millis();
           cavaloJaPassou=true;
