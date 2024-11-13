@@ -98,7 +98,7 @@ void atualizarTempoNoServidor(long minutos, long segundos, long centesimos) {
 
     if (httpResponseCode > 0) {
       String response = http.getString();
-      Serial.println("Resposta do servidor: " + response);
+      //Serial.println("Resposta do servidor: " + response);
     } else {
       Serial.println("Erro na requisição HTTP: " + String(httpResponseCode));
     }
