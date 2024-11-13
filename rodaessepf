@@ -51,7 +51,7 @@
 // Replace with ESP32 network credentials
 const char* ssid     = "ESP32-WIFI";
 const char* password = "testando";
-
+int atualiza = 0;
 // Initialize variables to get and save LoRa data
 int rssi;
 String minutos2="";
@@ -68,7 +68,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //Para os botões
 const int start_end_pin = 2, resetpin = 3;
-int atualiza = 0;
+
 
 /* Local prototypes */
 bool display_ok=false;
@@ -98,7 +98,7 @@ void atualizarTempoNoServidor(long minutos, long segundos, long centesimos) {
 
     if (httpResponseCode > 0) {
       String response = http.getString();
-      //Serial.println("Resposta do servidor: " + response);
+      Serial.println("Resposta do servidor: " + response);
     } else {
       Serial.println("Erro na requisição HTTP: " + String(httpResponseCode));
     }
@@ -232,13 +232,14 @@ void loop() {
       if (receivedMessage == 'A') {
         Serial.println("Cronômetro pronto");
       }
-      if (receivedMessage == 'E') { //
+      if (receivedMessage == 'S') { //
         if(!cavaloJaPassou){
           tempo=millis();
           cavaloJaPassou=true;
           Serial.println("cavalo passou");
           atualiza = 1;
         }
+      } else if (receivedMessage == 'E') {
         if(cavaloJaPassou){
           cavaloJaPassou=false;
           pareiCronometro=true;
