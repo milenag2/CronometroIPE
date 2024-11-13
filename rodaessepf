@@ -239,7 +239,6 @@ void loop() {
           Serial.println("cavalo passou");
           atualiza = 1;
         }
-      } else if (receivedMessage == 'E') {
         if(cavaloJaPassou){
           cavaloJaPassou=false;
           pareiCronometro=true;
