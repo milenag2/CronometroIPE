@@ -68,6 +68,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //Para os botões
 const int start_end_pin = 2, resetpin = 3;
+int atualiza = 0;
 
 /* Local prototypes */
 bool display_ok=false;
@@ -236,11 +237,13 @@ void loop() {
           tempo=millis();
           cavaloJaPassou=true;
           Serial.println("cavalo passou");
+          atualiza = 1;
         }
         if(cavaloJaPassou){
           cavaloJaPassou=false;
           pareiCronometro=true;
           Serial.println("Cronometro parou");
+          atualiza = 0;
         }
       }
     }
@@ -288,6 +291,8 @@ void loop() {
     minutos2=String(minutos);
     segundos2=String(segundos);
     centesimos2=String(centesimos);
-    atualizarTempoNoServidor(minutos, segundos, centesimos);
+    if(atualiza == 1){
+      atualizarTempoNoServidor(minutos, segundos, centesimos);
+    }
   }
 }
