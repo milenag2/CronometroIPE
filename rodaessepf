@@ -68,7 +68,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //Para os botões
 const int start_end_pin = 2, resetpin = 3;
-atualiza = 0;
+int atualiza = 0;
 
 /* Local prototypes */
 bool display_ok=false;
